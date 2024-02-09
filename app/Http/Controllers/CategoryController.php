@@ -24,14 +24,14 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->save();
 
-        return redirect('/')->with('success', 'Category created successfully');
+        return redirect('/categories')->with('success', 'Category created successfully');
     }
 
     public function delete_category($id)
     {
         $category = Category::find($id);
         $category->delete();
-        return redirect('/')->with('success', 'Category deleted successfully');
+        return redirect('/categories')->with('success', 'Category deleted successfully');
     }
 
     public function update_category(Request $request)
@@ -44,7 +44,7 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->update();
 
-        return redirect('/')->with('success', 'Category updated successfully');
+        return redirect('/categories')->with('success', 'Category updated successfully');
     }
 
     public function edit_category($id)

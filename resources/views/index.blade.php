@@ -68,13 +68,15 @@
 						@if (session('user_id'))
 							<li class="has-children">
 							<a>Disponibilités</a>
+							  
 							<ul class="dropdown">
-								<li><a href="/">categories</a></li>
-								<li><a href="/products">Products</a></li>
-								<li><a href="/roles">Roles</a></li>
-								<li><a href="/users">Administration</a></li>
-                                <li><a href="/clients">Clients</a></li>
-							</ul>
+							@foreach ($hasPermission as $permission => $allowed)
+								@if ($allowed)
+									<li><a href="/{{ $permission }}">{{ ucfirst($permission) }}</a></li>
+								@endif
+							@endforeach
+						</ul>
+
 						</li>
 						@endif
 						

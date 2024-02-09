@@ -32,7 +32,7 @@
                 <ul class="sidebar_nav">
 
                     <li class="sidebar_item ">
-                        <a href="/" class="sidebar_link"> <img src="{{ asset('img/task.svg') }}" alt="icon">Categories</a>
+                        <a href="/categories" class="sidebar_link"> <img src="{{ asset('img/task.svg') }}" alt="icon">Categories</a>
                     </li>
 
                     <li class="sidebar_item ">

@@ -22,7 +22,6 @@ class CheckPermission
     {
         // Routes publiques qui ne nécessitent pas de vérification de permission
         $publicRoutes = [
-            '/',
             'login',
             'logout',
             'loginpost',

@@ -22,7 +22,7 @@
 
 
 
-    Route::get('/', [CategoryController::class, 'list_categories'])->name('/');
+    Route::get('/categories', [CategoryController::class, 'list_categories'])->name('categories');
     Route::get('/products', [ProductController::class, 'list_products'])->name('products');
     Route::get('/roles', [RoleController::class, 'show_roles'])->name('roles');
     Route::post('/addRole', [RoleController::class, 'add_roles'])->name('addRole');
