@@ -46,8 +46,10 @@ class AuthController extends Controller
         if (!$user || !Hash::check($request->password, $user->password)) {
             return back()->with('error', 'Invalid email or password');
         }
+        $role = $user->id_role;
         session(['user_id' => $user->id]);
-        return redirect('/');
+        session(['user_role' => $role]);
+        return redirect('/allproducts');
     }
 
     public function logout(){

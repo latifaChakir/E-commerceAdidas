@@ -64,16 +64,20 @@
 
 					<ul class="js-clone-nav pl-0 d-none d-lg-inline-block site-menu">
 						<li class="active"><a href="shop.html">Home</a></li>
-						<li class="has-children">
-							<a href="shop.html">Shop</a>
+						 
+						@if (session('user_id'))
+							<li class="has-children">
+							<a>Disponibilités</a>
 							<ul class="dropdown">
-								<li><a href="#">T-Shirt</a></li>
-								<li><a href="#">Underware</a></li>
-								<li><a href="#">Clothing</a></li>
-								<li><a href="#">Watches</a></li>
-								<li><a href="#">Shoes</a></li>
+								<li><a href="/">categories</a></li>
+								<li><a href="/products">Products</a></li>
+								<li><a href="/roles">Roles</a></li>
+								<li><a href="/users">Administration</a></li>
+                                <li><a href="/clients">Clients</a></li>
 							</ul>
 						</li>
+						@endif
+						
 						<li class="has-children">
 							<a href="#">Pages</a>
 							<ul class="dropdown">

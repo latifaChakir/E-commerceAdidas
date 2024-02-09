@@ -11,7 +11,7 @@
 <body>
   <div class="wrapper">
     <h2>Registration</h2>
-    <form method="POST" action="{{ route('registerpost') }}">
+    <form method="POST" action="/registerpost">
     @csrf
       <div class="input-box">
         <input type="text" name="name" placeholder="Enter your name" required>

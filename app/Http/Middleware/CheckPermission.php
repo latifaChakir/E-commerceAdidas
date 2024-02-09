@@ -2,6 +2,9 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Permessions;
+use App\Models\Role;
+use App\Models\Role_permission;
 use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
@@ -15,26 +18,40 @@ class CheckPermission
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
 
-    public function handle(Request $request, Closure $next, ...$permissions)
+    public function handle(Request $request, Closure $next): Response
     {
-        if (!$this->authenticated()) {
-            return redirect('/login');
+        // Routes publiques qui ne nécessitent pas de vérification de permission
+        $publicRoutes = [
+            '/',
+            'login',
+            'logout',
+            'loginpost',
+            'registerpost',
+            'register',
+            'password-reset',
+            'allproducts',
+            'password-reset/{token}',
+            'new-password'
+        ];
+
+        $uri = $request->route()->uri;
+        $role_id = session('user_role');
+
+        if (in_array($uri, $publicRoutes)) {
+            return $next($request);
         }
-        foreach ($permissions as $permission) {
-            if ($this->user()->can($permission)) {
-                return $next($request);
-            }
+        if (!$role_id) {
+            return abort(401);
         }
-        return redirect('/')->with('error', 'Unauthorized access');
+
+        $role = Role::find($role_id);
+        $permissions = $role->permissions()->pluck('permessions_name')->toArray();
+        if (!in_array($uri, $permissions)) {
+            return abort(403, 'You dont have the access!!.');
+        }
+
+        return $next($request);
     }
 
-    protected function authenticated()
-    {
-        return session()->has('user_id');
-    }
 
-    protected function user()
-    {
-        return User::find(session('user_id'));
-    }
 }

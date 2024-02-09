@@ -46,4 +46,10 @@ class CategoryController extends Controller
 
         return redirect('/')->with('success', 'Category updated successfully');
     }
+
+    public function edit_category($id)
+    {
+        $category = category::find($id);
+        return view('category.editcategory', compact('category'));
+    }
 }

@@ -46,9 +46,7 @@
                     <li class="sidebar_item ">
                         <a href="/roles" class="sidebar_link"><img src="{{ asset('img/articles.svg') }}" alt="icon">Roles</a>
                     </li>
-                     <li class="sidebar_item ">
-                        <a href="/permessions" class="sidebar_link"><img src="{{ asset('img/articles.svg') }}" alt="icon">Permessions</a>
-                    </li>
+                    
                      <li class="sidebar_item ">
                         <a href="/users" class="sidebar_link"><img src="{{ asset('img/agent.svg') }}" alt="icon">Administration</a>
                     </li>
