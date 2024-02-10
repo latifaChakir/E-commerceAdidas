@@ -26,8 +26,8 @@
     Route::get('/products', [ProductController::class, 'list_products'])->name('products');
     Route::get('/roles', [RoleController::class, 'show_roles'])->name('roles');
     Route::post('/addRole', [RoleController::class, 'add_roles'])->name('addRole');
-    Route::get('/deleteRole/{id}', [RoleController::class, 'deleteRole'])->name('deleteRole');
-    Route::get('/editRole/{id}', [RoleController::class, 'editRole'])->name('editRole');
+    Route::get('/deleteRole/{id}', [RoleController::class, 'deleteRole'])->name('deleteRole{id}');
+    Route::get('/editRole/{id}', [RoleController::class, 'editRole'])->name('editRole{id}');
     Route::post('/updaterole', [RoleController::class, 'update_role'])->name('updaterole');
     ////////////
     // Route::get('/permessions', [PermessionsController::class, 'show_permessions'])->name('permessions');
@@ -69,6 +69,9 @@
     Route::get('/resetwithemail/{token}', [AuthController::class, 'reset'])->name('resetwithemail');
     Route::get('/logout', [AuthController::class, 'logout']);
     Route::post('/loginpost', [AuthController::class, 'loginpost'])->name('loginpost');
+    Route::get('/search', [ProductController::class, 'search']);
+
+
 
 
 

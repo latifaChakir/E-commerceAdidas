@@ -25,7 +25,7 @@
 
 	<div class="search-form" id="search-form">
 		<form action="">
-			<input type="search" class="form-control" placeholder="Enter keyword to search...">
+			<input type="search" class="form-control" id="search" placeholder="Enter keyword to search...">
 			<button class="button">
 				<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 					<path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
@@ -179,29 +179,15 @@
 	</div>
 
 	<div class="untree_co-section">
-		<div class="container">
-			<div class="row">
-                @foreach ($products as $product)
-				<div class="col-6 col-sm-6 col-md-6 mb-4 col-lg-4">
-					<div class="product-item">
-						<a href="shop-single.html" class="product-img">
-							<div class="label new top-right">
-								<div class='content'>New</div>
-							</div>
-							<img src="img/{{ $product->image_path }}" alt="Image" class="img-fluid">
-						</a>
-						<h3 class="title"><a href="#">{{ $product->name}}</a></h3>
-						<div class="price">
-							<span>{{ $product->prix}}$</span>
-						</div>
-                        <button btn btn-succes>BUY</button>
-					</div>
-                   
-				</div>
-                 @endforeach
-			</div>
+		<div class="container"  id="searchResults" >
+			 {{-- here we gonna put the products. --}}
+			
 		</div>
-	</div> <!-- /.untree_co-section -->
+	
+	</div> 
+	
+	
+	<!-- /.untree_co-section -->
 	<div class="untree_co-section bg-light">
 		<div class="container">
 			<div class="row align-items-stretch">

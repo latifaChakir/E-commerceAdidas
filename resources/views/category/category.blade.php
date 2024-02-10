@@ -13,7 +13,7 @@
     </div>
 
     <table class="agent table align-middle bg-white">
-        
+
         <thead class="bg-light">
             <tr>
                 <th>Name</th>
@@ -44,6 +44,11 @@
             @endforeach
         </tbody>
     </table>
+     <div class="d-flex justify-content-end">
+            <ul class="pagination">
+                {!! $categories->links() !!}
+            </ul>
+        </div>
 
 </section>
 @endsection

@@ -12,11 +12,11 @@ class UserController extends Controller
     public function show_users()
     {   
         $roles=Role::all();
-        $users = DB::select("SELECT users.*, roles.name as role_name 
-        FROM users 
-        LEFT JOIN roles ON roles.id = users.id_role
-        WHERE roles.id IS NOT NULL OR users.id_role IS NULL
-        ");
+        $users = User::leftJoin('roles', 'roles.id', '=', 'users.id_role')
+        ->select('users.*', 'roles.name as role_name')
+        ->whereNotNull('roles.id')
+        ->orWhereNull('users.id_role')
+        ->simplePaginate(3);
         return view('Users.index', compact('users','roles'));
     }
 

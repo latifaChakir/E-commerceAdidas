@@ -12,19 +12,15 @@ class RoleController extends Controller
 {
     public function show_roles()
     {
-        $roles = DB::select('select role_permissions.*, roles.name as role_name, permessions.permessions_name as permessions_name,roles.id as role_id from role_permissions join roles on role_permissions.id_role=roles.id join permessions on permessions.id=role_permissions.id_permissions');
-        $uniqueRoles = [];
-        foreach ($roles as $role) {
-            $roleId = $role->id_role;
-            if (!isset($uniqueRoles[$roleId])) {
-                $uniqueRoles[$roleId] = (object) $role;
-                $uniqueRoles[$roleId]->permissions = [];
-            }
-            $uniqueRoles[$roleId]->permissions[] = $role->permessions_name;
-        }
-        // dd($uniqueRoles);
+        $roles = DB::table('roles')
+        ->leftJoin('role_permissions', 'roles.id', '=', 'role_permissions.id_role')
+        ->leftJoin('permessions', 'role_permissions.id_permissions', '=', 'permessions.id')
+        ->select('roles.id', 'roles.name as role_name')
+        ->selectRaw('GROUP_CONCAT(permessions.permessions_name) as permissions')
+        ->groupBy('roles.id', 'roles.name')
+        ->simplePaginate(2);
         $permessions = Permessions::all();
-        return view('Role.index', compact('uniqueRoles', 'permessions'));
+        return view('Role.index', compact('roles', 'permessions'));
     }
     public function add_roles(Request $request){
         $request->validate([

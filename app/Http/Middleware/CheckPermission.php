@@ -27,10 +27,12 @@ class CheckPermission
             'loginpost',
             'registerpost',
             'register',
-            'password-reset',
+            'search',
+            'resetpasswordPost',
             'allproducts',
-            'password-reset/{token}',
-            'new-password'
+            'resetwithemail/{token}',
+            'forgetpassword',
+            'newpasswordPost'
         ];
 
         $uri = $request->route()->uri;

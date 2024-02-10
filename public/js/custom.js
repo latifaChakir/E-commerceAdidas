@@ -360,3 +360,21 @@ $(function(){
 	sitePlusMinus();
 
 })
+////////////////////////
+
+const search = document.getElementById('search');
+const searchResults = document.getElementById('searchResults'); 
+fetchSearchResults();
+
+search.addEventListener("keyup", function() {
+  fetchSearchResults();
+});
+
+function fetchSearchResults() {
+  fetch(`/search?search=${search.value}`)
+    .then(res => res.text())
+    .then(data => {
+      searchResults.innerHTML = data; 
+    })
+    .catch(error => console.error('Erreur lors de la recherche:', error));
+}

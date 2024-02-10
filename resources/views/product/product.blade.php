@@ -88,7 +88,11 @@
         </tbody>
         
     </table>
-
+       <div class="d-flex justify-content-end">
+            <ul class="pagination">
+                {!! $produits->links() !!}
+            </ul>
+        </div>
 </section>
 @endsection
 

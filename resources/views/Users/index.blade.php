@@ -52,7 +52,11 @@
             @endforeach
         </tbody>
     </table>
-
+        <div class="d-flex justify-content-end">
+            <ul class="pagination">
+                {!! $users->links() !!}
+            </ul>
+        </div>
 </section>
 @endsection
 @section('additional_content')

@@ -69,6 +69,11 @@
         </tbody>
         
     </table>
+     <div class="d-flex justify-content-end">
+            <ul class="pagination">
+                {!! $clients->links() !!}
+            </ul>
+        </div>
 
 </section>
 @endsection

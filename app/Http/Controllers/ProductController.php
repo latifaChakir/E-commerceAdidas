@@ -13,7 +13,10 @@ class ProductController extends Controller
     //
     public function list_products(){
         $categories= Category::all();
-        $produits= DB::select('select products.*, categories.name as category_name from products JOIN categories on products.id_categorie = categories.id');
+        $produits = DB::table('products')
+        ->join('categories', 'products.id_categorie', '=', 'categories.id')
+        ->select('products.*', 'categories.name as category_name')
+        ->simplePaginate(2);
         return view('product.product', ['produits' => $produits, 'categories' =>$categories]);
     }
 
@@ -121,6 +124,13 @@ class ProductController extends Controller
         $view->with('hasPermission', $hasPermission);
     });
          return view('index',compact('products'));
+    }
+
+    public function search(Request $request)
+    {
+        $searchTerm = $request->input('search');
+        $products = Product::where('name', 'like', "%{$searchTerm}%")->get();
+        return view('search', compact('products'));
     }
 
     }

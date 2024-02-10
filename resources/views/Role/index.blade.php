@@ -13,10 +13,8 @@
                 <th>Permessions</th>
             </tr>
         </thead>
-        
-  <tbody>
-  
-    @foreach ($uniqueRoles as $role)
+ <tbody>
+    @foreach ($roles as $role)
         <tr class="freelancer">
             <td>
                 <div class="d-flex align-items-center">
@@ -28,23 +26,40 @@
                 </div>
             </td>
             <td>
-                <div class="d-flex align-items-center">
-                    <div class="ms-3">
-                        <p class="fw-bold mb-1 f_title">
-                            {{ implode(', ', $role->permissions) }}
-                        </p>
-                    </div>
+            <div class="d-flex align-items-center">
+                <div class="ms-3">
+                    <p class="fw-bold mb-1 f_title">
+                        @php
+                            $permissionsArray = explode(',', $role->permissions);
+                            $chunks = array_chunk($permissionsArray, 5);
+                        @endphp
+
+                        @foreach ($chunks as $chunk)
+                            <div>
+                                @foreach ($chunk as $permission)
+                                    <span>{{ $permission }}</span>
+                                @endforeach
+                            </div>
+                        @endforeach
+                    </p>
                 </div>
+            </div>
+
             </td>
             <td>
-                <a href="/deleteRole/{{ $role->role_id }}"><img class="delet_user" src="{{ asset('img/delete.svg') }}" alt=""></a>
-                <a href="/editRole/{{ $role->role_id }}"><img class="ms-2 edit" src="{{ asset('img/edit.svg') }}" alt=""></a>
+                <a href="/deleteRole/{{ $role->id }}"><img class="delet_user" src="{{ asset('img/delete.svg') }}" alt=""></a>
+                <a href="/editRole/{{ $role->id }}"><img class="ms-2 edit" src="{{ asset('img/edit.svg') }}" alt=""></a>
             </td>
         </tr>
     @endforeach
 </tbody>
 
     </table>
+     <div class="d-flex justify-content-end">
+            <ul class="pagination">
+              {{ $roles->links() }}
+            </ul>
+        </div>
 
 </section>
 @endsection
