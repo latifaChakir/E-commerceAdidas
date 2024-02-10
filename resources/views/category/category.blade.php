@@ -13,6 +13,7 @@
     </div>
 
     <table class="agent table align-middle bg-white">
+        
         <thead class="bg-light">
             <tr>
                 <th>Name</th>

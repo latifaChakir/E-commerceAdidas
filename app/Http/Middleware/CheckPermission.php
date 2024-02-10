@@ -48,7 +48,7 @@ class CheckPermission
         if (!in_array($uri, $permissions)) {
             return abort(403, 'You dont have the access!!.');
         }
-
+         
         return $next($request);
     }
 

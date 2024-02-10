@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Product;
 use App\Models\category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class ProductController extends Controller
 {
@@ -103,7 +104,6 @@ class ProductController extends Controller
 
     public function allproducts(){
         $userRole = session('user_role');
-   
         $permissions= DB::table('permessions')
         ->join('role_permissions', 'permessions.id', '=', 'role_permissions.id_permissions')
         ->join('roles', 'role_permissions.id_role', '=', 'roles.id')
@@ -117,7 +117,10 @@ class ProductController extends Controller
             $hasPermission[$permission] = in_array($permission, $permissions);
         }
         $products = Product::all();
-         return view('index',compact('products','hasPermission'));
+       View::composer(['index', 'layout'], function ($view) use ($hasPermission) {
+        $view->with('hasPermission', $hasPermission);
+    });
+         return view('index',compact('products'));
     }
 
     }

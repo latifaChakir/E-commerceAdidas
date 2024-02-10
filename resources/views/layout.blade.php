@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,8 +16,6 @@
      <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/css/select2.min.css" rel="stylesheet" />
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-     
-
 </head>
 
 <body>
@@ -29,29 +28,38 @@
 
                 </div>
 
-                <ul class="sidebar_nav">
+             <ul class="sidebar_nav">
+                @if($hasPermission['categories'])
+                <li class="sidebar_item ">
+                    <a href="/categories" class="sidebar_link"> <img src="{{ asset('img/task.svg') }}" alt="icon">Categories</a>
+                </li>
+                @endif
 
-                    <li class="sidebar_item ">
-                        <a href="/categories" class="sidebar_link"> <img src="{{ asset('img/task.svg') }}" alt="icon">Categories</a>
-                    </li>
+                @if($hasPermission['products'])
+                <li class="sidebar_item ">
+                    <a href="/products" class="sidebar_link"><img src="{{ asset('img/articles.svg') }}" alt="icon">Products</a>
+                </li>
+                @endif
 
-                    <li class="sidebar_item ">
-                        <a href="/products" class="sidebar_link"><img src="{{ asset('img/articles.svg') }}" alt="icon">Products</a>
-                    </li>
+                @if($hasPermission['clients'])
+                <li class="sidebar_item ">
+                    <a href="/clients" class="sidebar_link"><img src="{{ asset('img/agents.svg') }}" alt="icon">Clients</a>
+                </li>
+                @endif
 
-                    <li class="sidebar_item ">
-                        <a href="/clients" class="sidebar_link"><img src="{{ asset('img/agents.svg') }}" alt="icon">Clients</a>
-                    </li>
+                @if($hasPermission['roles'])
+                <li class="sidebar_item ">
+                    <a href="/roles" class="sidebar_link"><img src="{{ asset('img/articles.svg') }}" alt="icon">Roles</a>
+                </li>
+                @endif
 
-                    <li class="sidebar_item ">
-                        <a href="/roles" class="sidebar_link"><img src="{{ asset('img/articles.svg') }}" alt="icon">Roles</a>
-                    </li>
-                    
-                     <li class="sidebar_item ">
-                        <a href="/users" class="sidebar_link"><img src="{{ asset('img/agent.svg') }}" alt="icon">Administration</a>
-                    </li>
+                @if($hasPermission['users'])
+                <li class="sidebar_item ">
+                    <a href="/users" class="sidebar_link"><img src="{{ asset('img/agent.svg') }}" alt="icon">Administration</a>
+                </li>
+                @endif
+            </ul>
 
-                </ul>
                 <div class="line"></div>
                 <a href="#" class="sidebar_link"><img src="{{ asset('img/settings.svg') }}" alt="">Settings</a>
             </div>
