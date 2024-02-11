@@ -22,7 +22,6 @@
 </head>
 
 <body>
-
 	<div class="search-form" id="search-form">
 		<form action="">
 			<input type="search" class="form-control" id="search" placeholder="Enter keyword to search...">
@@ -75,37 +74,19 @@
 						</li>
 						@endif
 						
-						<li class="has-children">
-							<a href="#">Pages</a>
-							<ul class="dropdown">
-								<li><a href="elements.html">Elements</a></li>
-								<li><a href="about.html">About</a></li>
-								<li><a href="contact.html">Contact</a></li>
-								<li><a href="cart.html">Cart</a></li>
-								<li><a href="checkout.html">Checkout</a></li>
-								
-								<li class="has-children">
-									<a href="#">Menu Two</a>
-									<ul class="dropdown">
-										<li><a href="#">T-Shirt</a></li>
-										<li><a href="#">Underware</a></li>
-										<li><a href="#">Clothing</a></li>
-										<li><a href="#">Watches</a></li>
-										<li><a href="#">Shoes</a></li>
-
-									</ul>
-								</li>
-								<li><a href="#">Menu Three</a></li>
-							</ul>
+						<li >
+							<select id="category-filter" style="background-color: transparent; border:none;color:rgba(0, 0, 0, 0.5)">
+								<option value="" disabled selected>Catégorie</option>
+								@foreach ($categories as $category)
+									<option value="{{$category->id}}">{{$category->name}}</option>
+								@endforeach
+							</select>
 						</li>
 
 						<li><a href="shop.html">Men</a></li>
 						<li><a href="shop.html">Women</a></li>
 						
 					</ul>
-
-
-
 
 					<div class="menu-icons">
 

@@ -378,3 +378,17 @@ function fetchSearchResults() {
     })
     .catch(error => console.error('Erreur lors de la recherche:', error));
 }
+//////////////////FILTRAGE
+ document.getElementById('category-filter').addEventListener('change', function() {
+    var selectedCategory = this.value;
+    fetch(`/filter?category=${selectedCategory}`)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('searchResults').innerHTML = data;
+        })
+        .catch(error => console.error('Erreur lors du filtrage des produits:', error));
+});
+
+
+
+

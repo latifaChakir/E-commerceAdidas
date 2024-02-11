@@ -123,7 +123,8 @@ class ProductController extends Controller
        View::composer(['index', 'layout'], function ($view) use ($hasPermission) {
         $view->with('hasPermission', $hasPermission);
     });
-         return view('index',compact('products'));
+        $categories=Category::all();
+         return view('index',compact('products','categories'));
     }
 
     public function search(Request $request)
@@ -131,6 +132,19 @@ class ProductController extends Controller
         $searchTerm = $request->input('search');
         $products = Product::where('name', 'like', "%{$searchTerm}%")->get();
         return view('search', compact('products'));
+    }
+
+    public function filter(Request $request)
+    {
+        $selectedCategory = $request->input('category');
+
+        if ($selectedCategory) {
+            $products = Product::where('id_categorie', $selectedCategory)->get();
+        } else {
+            $products = Product::all();
+        }
+
+        return view('filter', compact('products'));
     }
 
     }

@@ -70,6 +70,8 @@
     Route::get('/logout', [AuthController::class, 'logout']);
     Route::post('/loginpost', [AuthController::class, 'loginpost'])->name('loginpost');
     Route::get('/search', [ProductController::class, 'search']);
+    Route::get('/filter', [ProductController::class, 'filter']);
+  
 
 
 

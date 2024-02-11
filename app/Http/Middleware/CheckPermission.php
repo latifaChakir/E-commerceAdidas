@@ -32,7 +32,8 @@ class CheckPermission
             'allproducts',
             'resetwithemail/{token}',
             'forgetpassword',
-            'newpasswordPost'
+            'newpasswordPost',
+            'filter'
         ];
 
         $uri = $request->route()->uri;
