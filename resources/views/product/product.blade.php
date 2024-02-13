@@ -16,6 +16,7 @@
     <table class="agent table align-middle bg-white">
         <thead class="bg-light">
             <tr>
+                <th>Image</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>price</th>
@@ -27,6 +28,14 @@
         <tbody>
             @foreach($produits as $product)
             <tr class="freelancer">
+                 <td>
+                    <div class="d-flex align-items-center">
+
+                        <div class="ms-3">
+                           <img  src="/img/{{ $product->image_path }}" width="50px" alt="">
+                        </div>
+                    </div>
+                </td>
                 <td>
                     <div class="d-flex align-items-center">
 
@@ -37,6 +46,7 @@
                         </div>
                     </div>
                 </td>
+               
                 <td>
                     <div class="d-flex align-items-center">
 

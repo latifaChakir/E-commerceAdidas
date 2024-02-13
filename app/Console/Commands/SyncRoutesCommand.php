@@ -41,7 +41,7 @@ class SyncRoutesCommand extends Command
         });
 
         foreach ($newRoutes as $route) {
-            if ($route['permessions_name'] !== null) {
+            if ($route['permessions_name'] !== null && strpos($route['permessions_name'], '.') === false) {
                 Permessions::create([
                     'permessions_name' => $route['permessions_name'],
                 ]);
